@@ -1,0 +1,99 @@
+################# LISTAS ####################
+
+my_lista = ['Rojo', 'Azul', 'Amarillo', 'Naranja', 'Violeta', 'Verde']  # Crea una lista con colores
+
+print(my_lista)  # Imprime toda la lista
+print(type(my_lista))  # Muestra el tipo de dato (list)
+print(my_lista[2])  # Muestra el elemento en la posición 2 → 'Amarillo'
+
+print("my_lista size: ", len(my_lista))  # Muestra la cantidad de elementos de la lista
+
+print(my_lista[0:2])  # Muestra desde índice 0 hasta antes del 2 → ['Rojo', 'Azul']
+print(my_lista[:2])  # Igual que el anterior (desde inicio hasta índice 2)
+
+my_lista.append('Blanco')  # Agrega 'Blanco' al final de la lista
+print(my_lista)  # Imprime la lista actualizada
+
+my_lista.insert(3, 'Negro')  # Inserta 'Negro' en la posición 3
+print(my_lista)  # Imprime la lista actualizada
+
+my_lista.extend(['Marron', 'Gris'])  # Agrega varios elementos al final de la lista
+print(my_lista)  # Imprime la lista actualizada
+
+print(my_lista.index('Azul'))  # Devuelve la posición donde está 'Azul'
+
+# my_lista.remove('Magenta')  # Esto daría error porque 'Magenta' no está en la lista
+my_lista.remove('Marron')  # Elimina 'Marron' de la lista
+print(my_lista)  # Imprime la lista actualizada
+
+my_lista.insert(8, 'Marron')  # Inserta 'Marron' en la posición 8
+print(my_lista)  # Imprime la lista actualizada
+
+print(my_lista.pop())  # Elimina y muestra el último elemento de la lista
+
+size = len(my_lista)  # Guarda el tamaño actual de la lista
+print("size = ", size)  # Imprime el tamaño
+
+# print(my_lista.pop(size))  # Esto daría error (índice fuera de rango)
+
+my_lista_3 = my_lista * 3  # Repite la lista 3 veces
+print("my_lista_3: ", my_lista_3)  # Imprime la lista repetida
+
+print("Sort:")
+print()
+
+my_listaSort = my_lista.sort()  # Ordena la lista original (pero devuelve None)
+print(my_listaSort)  # Imprime None porque sort() no retorna lista
+
+my_NumList = [10, 9, 8, 7, 6 , 5 , 4, 3, 2, 1]  # Lista de números desordenada
+print("Ordering my_NumList: ")
+
+my_NumList.sort()  # Ordena la lista de menor a mayor
+print(my_NumList)  # Imprime lista ordenada
+
+# OrderedList = my_NumList.sort()  # Esto sería None, igual que antes
+
+my_NumList.sort(reverse=True)  # Ordena la lista de mayor a menor
+print("De menor a mayor: ", my_NumList)  # Imprime lista ordenada en reversa
+
+
+
+################# TUPLAS ####################
+
+print("###########################")
+print("###########################")
+print("###########################")
+print("############ TUPLAS #########")
+
+my_tupla = tuple(my_lista)  # Convierte la lista en tupla (inmutable)
+
+print()
+print()
+
+print("my_tuple: ", my_tupla)  # Imprime la tupla
+
+print(my_tupla[0])  # Muestra el primer elemento de la tupla
+print(my_tupla[2])  # Muestra el tercer elemento
+
+print('Rojo' in my_tupla)  # Verifica si 'Rojo' está en la tupla (True/False)
+print(my_tupla.count('Rojo'))  # Cuenta cuántas veces aparece 'Rojo'
+
+my_tupla_unitaria = ('Blanco')  # Esto NO es una tupla, es un string
+print(my_tupla_unitaria)  # Imprime 'Blanco'
+
+# Forma correcta sería: ('Blanco',)
+
+my_tupla = 'Gaspar', 5, 8, 1999  # Crea una tupla sin usar paréntesis (empaquetado)
+print(my_tupla)  # Imprime la tupla
+
+nombre, dia, mes, año = my_tupla  # Desempaqueta la tupla en variables
+
+print(nombre)  # Imprime 'Gaspar'
+print(dia)  # Imprime 5
+print(mes)  # Imprime 8
+print(año)  # Imprime 1999
+
+print("Nombre: ", nombre, " - Dia:", dia, " - Mes: ", mes, "- Año: ", año)  # Imprime todo junto
+
+my_lista2 = list(my_tupla)  # Convierte la tupla en lista
+print(my_lista2)  # Imprime la nueva lista

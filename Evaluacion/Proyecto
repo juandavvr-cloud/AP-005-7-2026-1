@@ -1,0 +1,244 @@
+# =========================================
+# SISTEMA DE INVENTARIO EN CONSOLA (PRO)
+# =========================================
+
+# Tupla: categorias fijas
+categorias = ("Tecnologia", "Alimentos", "Ropa", "Hogar")
+
+# Lista: almacena productos
+inventario = []
+
+print("=== BIENVENIDO AL SISTEMA ===")
+
+
+# -----------------------------------------
+# AGREGAR PRODUCTO
+# -----------------------------------------
+def agregar_producto():
+    codigo = input("Codigo: ")
+
+    # Validar codigo unico
+    for p in inventario:
+        if p["codigo"] == codigo:
+            print("Codigo repetido")
+            return
+
+    nombre = input("Nombre: ")
+
+    # Validacion de numeros
+    while True:
+        try:
+            precio = float(input("Precio: "))
+            break
+        except:
+            print("Ingrese un numero valido")
+
+    while True:
+        try:
+            cantidad = int(input("Cantidad: "))
+            break
+        except:
+            print("Ingrese un numero valido")
+
+    print("Categorias:", categorias)
+    categoria = input("Categoria: ")
+
+    if categoria not in categorias:
+        print("Categoria invalida")
+        return
+
+    producto = {
+        "codigo": codigo,
+        "nombre": nombre,
+        "precio": precio,
+        "cantidad": cantidad,
+        "categoria": categoria
+    }
+
+    inventario.append(producto)
+    print("Producto agregado")
+
+
+# -----------------------------------------
+# MOSTRAR PRODUCTOS
+# -----------------------------------------
+def mostrar_productos():
+    if len(inventario) == 0:
+        print("No hay productos")
+        return
+
+    for p in inventario:
+        print("----------------")
+        print(p)
+
+
+# -----------------------------------------
+# BUSCAR POR CODIGO
+# -----------------------------------------
+def buscar_producto():
+    codigo = input("Codigo: ")
+
+    for p in inventario:
+        if p["codigo"] == codigo:
+            print("Encontrado:", p)
+            return
+
+    print("No encontrado")
+
+
+# -----------------------------------------
+# BUSCAR POR NOMBRE
+# -----------------------------------------
+def buscar_por_nombre():
+    nombre = input("Nombre: ")
+
+    for p in inventario:
+        if p["nombre"] == nombre:
+            print("Encontrado:", p)
+            return
+
+    print("No encontrado")
+
+
+# -----------------------------------------
+# ELIMINAR PRODUCTO
+# -----------------------------------------
+def eliminar_producto():
+    codigo = input("Codigo: ")
+
+    for p in inventario:
+        if p["codigo"] == codigo:
+            inventario.remove(p)
+            print("Eliminado")
+            return
+
+    print("No encontrado")
+
+
+# -----------------------------------------
+# ACTUALIZAR PRODUCTO
+# -----------------------------------------
+def actualizar_producto():
+    codigo = input("Codigo: ")
+
+    for p in inventario:
+        if p["codigo"] == codigo:
+            p["nombre"] = input("Nuevo nombre: ")
+
+            while True:
+                try:
+                    p["precio"] = float(input("Nuevo precio: "))
+                    break
+                except:
+                    print("Numero invalido")
+
+            while True:
+                try:
+                    p["cantidad"] = int(input("Nueva cantidad: "))
+                    break
+                except:
+                    print("Numero invalido")
+
+            print("Actualizado")
+            return
+
+    print("No encontrado")
+
+
+# -----------------------------------------
+# TOTAL INVENTARIO
+# -----------------------------------------
+def total_inventario():
+    total = 0
+
+    for p in inventario:
+        total += p["precio"] * p["cantidad"]
+
+    print("Total inventario:", total)
+
+
+# -----------------------------------------
+# ORDENAR POR PRECIO
+# -----------------------------------------
+def ordenar_por_precio():
+    ordenados = sorted(inventario, key=lambda x: x["precio"])
+
+    print("Ordenados por precio")
+    for p in ordenados:
+        print(p)
+
+
+# -----------------------------------------
+# FILTRAR POR CATEGORIA
+# -----------------------------------------
+def filtrar_categoria():
+    cat = input("Categoria: ")
+
+    for p in inventario:
+        if p["categoria"] == cat:
+            print(p)
+
+
+# -----------------------------------------
+# CONTAR PRODUCTOS
+# -----------------------------------------
+def contar_productos():
+    print("Total productos:", len(inventario))
+
+
+# -----------------------------------------
+# MENU PRINCIPAL
+# -----------------------------------------
+while True:
+
+    print("\n--- MENU ---")
+    print("1. Agregar")
+    print("2. Mostrar")
+    print("3. Buscar por codigo")
+    print("4. Eliminar")
+    print("5. Actualizar")
+    print("6. Total inventario")
+    print("7. Ordenar por precio")
+    print("8. Buscar por nombre")
+    print("9. Filtrar por categoria")
+    print("10. Contar productos")
+    print("0. Salir")
+
+    opcion = input("Opcion: ")
+
+    if opcion == "1":
+        agregar_producto()
+
+    elif opcion == "2":
+        mostrar_productos()
+
+    elif opcion == "3":
+        buscar_producto()
+
+    elif opcion == "4":
+        eliminar_producto()
+
+    elif opcion == "5":
+        actualizar_producto()
+
+    elif opcion == "6":
+        total_inventario()
+
+    elif opcion == "7":
+        ordenar_por_precio()
+
+    elif opcion == "8":
+        buscar_por_nombre()
+
+    elif opcion == "9":
+        filtrar_categoria()
+
+    elif opcion == "10":
+        contar_productos()
+
+    elif opcion == "0":
+        print("Fin del programa")
+        break
+
+    else:
+        print("Opcion invalida")

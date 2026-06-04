@@ -17,4 +17,4 @@ Este proyecto lee una señal analógica desde un potenciómetro conectado al **G
    ```bash
    pip install -r requirements.txt
 ## Evidencia de Funcionamiento
-![Dashboard e IoT Funcionando](evidencia.png)
+![Dashboard e IoT Funcionando](3c13b905-9e0c-4b06-98ea-92334001e68d.jpg)

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tablero de Monitoreo Analógico - ESP32</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 30px; background-color: #f4f6f9; color: #333; }
+        h1 { text-align: center; color: #2c3e50; margin-bottom: 5px; }
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        .card h3 { margin: 0 0 10px 0; color: #7f8c8d; }
+        .card p { margin: 0; font-size: 24px; font-weight: bold; color: #2980b9; }
+        .plots-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .plot-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        .plot-card img { max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #ddd; }
+        .estado-ALTO { color: #c0392b !important; }
+        .estado-NORMAL { color: #27ae60 !important; }
+        .estado-BAJO { color: #f39c12 !important; }
+    </style>
+    <meta http-equiv="refresh" content="3">
+</head>
+<body>
+
+    <h1>Monitoreo Analógico de Señales en Tiempo Real</h1>
+    <p style="text-align: center; color: #7f8c8d; margin-top: 0; font-size: 14px;">
+        Estudiante: Vanessa Barrera Muñoz | Identificación: 20251005153
+    </p>
+
+    <div class="dashboard-grid">
+        <div class="card">
+            <h3>Voltaje Actual</h3>
+            <p>{{ data.voltaje }} V</p>
+        </div>
+        <div class="card">
+            <h3>Promedio Histórico</h3>
+            <p>{{ "%.2f"|format(data.promedio) }} V</p>
+        </div>
+        <div class="card">
+            <h3>Estado de la Señal</h3>
+            <p class="estado-{{ data.estado }}">{{ data.estado }}</p>
+        </div>
+    </div>
+
+    <div class="plots-grid">
+        <div class="plot-card">
+            <h3>Comportamiento Temporal (Voltaje vs Tiempo)</h3>
+            <img src="/static/plots/sensor_tiempo.png?t={{ data.tiempo_ms }}" alt="Señal en el tiempo">
+        </div>
+        <div class="plot-card">
+            <h3>Distribución Estadística (Histograma)</h3>
+            <img src="/static/plots/histograma.png?t={{ data.tiempo_ms }}" alt="Histograma de frecuencias">
+        </div>
+        <div class="plot-card" style="grid-column: span 2;">
+            <h3>Suavizado de la Señal por Promedio Móvil</h3>
+            <img src="/static/plots/promedio_movil.png?t={{ data.tiempo_ms }}" alt="Gráfica Promedio Móvil" style="max-width: 50%; margin: 0 auto;">
+        </div>
+    </div>
+
+</body>
+</html>

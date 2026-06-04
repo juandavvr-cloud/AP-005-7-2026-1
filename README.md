@@ -16,3 +16,5 @@ Este proyecto lee una señal analógica desde un potenciómetro conectado al **G
 1. Instala las dependencias:
    ```bash
    pip install -r requirements.txt
+## Evidencia de Funcionamiento
+![Dashboard e IoT Funcionando](evidencia.png)
